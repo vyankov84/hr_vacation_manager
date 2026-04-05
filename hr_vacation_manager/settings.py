@@ -22,7 +22,6 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
-
 PROJECT_APPS = [
     'accounts',
     'leave_requests',
@@ -49,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = 'accounts.EmployeeUser'
 
 ROOT_URLCONF = 'hr_vacation_manager.urls'
 
