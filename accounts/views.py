@@ -1,8 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accounts.forms import EmployeeRegisterForm
+from accounts.models import EmployeeUser
 
 
 class EmployeeRegister(CreateView):
@@ -17,3 +19,12 @@ class EmployeeLogin(LoginView):
 
 class EmployeeLogout(LogoutView):
     next_page = reverse_lazy('accounts:login')
+
+
+class EmployeeDetailView(LoginRequiredMixin, DetailView):
+    model = EmployeeUser
+    context_object_name = 'employee'
+    template_name = 'accounts/employee-details.html'
+
+    def get_object(self, queryset = None):
+        return self.request.user

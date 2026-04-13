@@ -50,6 +50,9 @@ MIDDLEWARE = [
 ]
 
 AUTH_USER_MODEL = 'accounts.EmployeeUser'
+LOGIN_REDIRECT_URL = 'accounts:details'
+LOGIN_URL = 'accounts:login'
+
 
 ROOT_URLCONF = 'hr_vacation_manager.urls'
 
