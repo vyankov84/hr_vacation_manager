@@ -8,6 +8,15 @@
                 <p><strong>Last Name:</strong> {{ employee.last_name }}</p>
                 <p><strong>Department:</strong> {{ employee.department }}</p>
                 <p><strong>Email:</strong> {{ employee.email }}</p>
+
+                <div>
+                    <h3><strong>Your leave information for Year: {{ employee.balances.year }}</strong></h3>
+                    <p><strong>Total days:</strong> {{ employee.balances.annual_leave_allowed }}</p>
+                    <p><strong>Remaining days:</strong>
+                        <span class="badge bg-success">{{ employee.balances.annual_leave_remaining }}</span>
+                </div>
+
+
             </div>
     </div>
 {% endblock %}
