@@ -11,7 +11,6 @@ from leave_requests.models import LeaveRequest
 def update_leave_balance_on_approval(sender, instance, created, **kwargs):
 
     if instance.status == LeaveStatus.APPROVED and not instance.is_processed:
-        .
         try:
             balance = LeaveBalance.objects.get(employee=instance.employee)
 
