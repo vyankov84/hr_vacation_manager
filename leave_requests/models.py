@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
 
-from leave_requests.choices import TypeLeave
+from leave_requests.choices import TypeLeave, LeaveStatus
 
 
 class LeaveRequest(models.Model):
@@ -25,6 +25,14 @@ class LeaveRequest(models.Model):
     reason = models.TextField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    status = models.CharField(
+        max_length=15,
+        choices=LeaveStatus.choices,
+        default=LeaveStatus.PENDING
+    )
+
+    is_processed = models.BooleanField(default=False)
 
     @property
     def duration_off(self) -> int:
