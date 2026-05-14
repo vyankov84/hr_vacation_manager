@@ -7,7 +7,7 @@
             </li>
 
             <li>
-                <a href="#" class="nav-link text-white">Calendar</a>
+                <a href="{% url 'leave_requests:calendar_view' %}" class="nav-link text-white">Calendar</a>
             </li>
 
             {% if user.is_authenticated %}
